@@ -1,0 +1,30 @@
+.
+├── app.js
+├── routes/
+│   ├── auth.js
+│   ├── users.js
+│   ├── products.js
+│   ├── stores.js
+│   ├── cart.js
+│   ├── orders.js
+│   ├── payments.js
+├── controllers/
+│   ├── authController.js
+│   ├── userController.js
+│   ├── productController.js
+│   ├── storeController.js
+│   ├── cartController.js
+│   ├── orderController.js
+│   ├── paymentController.js
+├── models/
+│   ├── data.json
+│   ├── user.js
+│   ├── product.js
+│   ├── store.js
+├── utils/
+│   ├── FileManager.js
+│   ├── helpers.js
+└── views/
+    ├── login.ejs
+    ├── register.ejs
+    ├── main.ejs
