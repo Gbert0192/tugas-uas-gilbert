@@ -14,6 +14,14 @@ const shoppingHistory = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userAddressDetails: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     driverNotes: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -23,7 +31,7 @@ const shoppingHistory = db.define(
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    payment: {
+    paymentMethod: {
       type: DataTypes.STRING,
       allowNull: false,
     },

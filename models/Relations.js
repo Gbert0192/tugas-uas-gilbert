@@ -1,7 +1,8 @@
 import User from "./user.js";
 import shoppingHistory from "../models/shoppingHistory.js";
 import topUpHistory from "../models/topUpHistory.js";
-import shoppingList from "../models/shoppingList.js";
+// import cart from "../models/cart.js";
+import cart from "../models/cart.js";
 
 // Relasi antar model
 User.hasMany(shoppingHistory, {
@@ -19,12 +20,12 @@ shoppingHistory.belongsTo(User, {
   as: "user",
 });
 
-shoppingHistory.hasMany(shoppingList, {
+shoppingHistory.hasMany(cart, {
   foreignKey: "orderId",
-  as: "shoppingLists",
+  as: "carts",
 });
 
-shoppingList.belongsTo(shoppingHistory, {
+cart.belongsTo(shoppingHistory, {
   foreignKey: "orderId",
   as: "shoppingHistory",
 });
