@@ -1,0 +1,74 @@
+<div class="min-h-screen">
+  <div class="flex items-center justify-between ml-5 mt-5">
+    <a href="/main/<%=user.userId %>">
+      <button
+        type="button"
+        class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gradient-to-r from-teal-400 to-teal-600 text-white hover:from-teal-500 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 dark:focus:ring-teal-600 shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-arrow-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 1-.5.5H3.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708.708L3.707 7.5H14.5a.5.5 0 0 1 .5.5z"
+          />
+        </svg>
+        Back
+      </button>
+    </a>
+  </div>
+  <% if (query && query !== 'undefined') { %>
+  <div class="flex items-center justify-center text-center">
+    <div class="text-5xl font-bold">
+      Search For <%= query.charAt(0).toUpperCase() + query.slice(1) %>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Kode untuk menampilkan produk -->
+  <% if (products.length > 0) { %>
+
+  <!-- this -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10"
+  >
+    <% products.forEach(product => { %>
+    <!-- Iterasi array produk -->
+    <li class="list-none">
+      <div class="bg-white rounded-lg shadow-lg p-4">
+        <img
+          alt="<%= product.title %>"
+          class="w-full h-48 object-cover rounded-lg mb-4"
+          src="<%= product.thumbnail || '/img/placeholder.png' %>"
+        />
+        <h2 class="text-xl font-semibold mb-2"><%= product.title %></h2>
+        <p class="text-gray-700 mb-2">
+          Rp. <%= formatCurrency(product.price * 16000) %>
+        </p>
+        <p class="text-gray-700 mb-2">
+          <%= product.tags[0] %> - <%= product.rating %>
+          <i class="fas fa-star text-yellow-500"></i>
+        </p>
+
+        <!-- Tombol untuk menampilkan quantity controls -->
+        <button
+          class="addButton bg-green-500 text-white px-4 py-2 rounded-full mt-2 trigger-button"
+          data-index="<%= product.id %>"
+        >
+          +
+        </button>
+      </div>
+    </li>
+    <% }) %>
+  </div>
+  <% } else if (typeof message !== 'undefined' && message) { %>
+  <div class="text-center my-10">
+    <p class="text-lg text-gray-600"><%= message %></p>
+  </div>
+  <% } %>
+</div>

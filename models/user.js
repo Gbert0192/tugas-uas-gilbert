@@ -25,6 +25,7 @@ const User = db.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -42,8 +43,11 @@ const User = db.define(
       allowNull: false,
       validate: {
         notEmpty: true,
-        len: [6, 25],
       },
+    },
+    refreshToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     age: {
       type: DataTypes.INTEGER,

@@ -1,0 +1,62 @@
+import shoppingHistory from "../models/shoppingHistory.js";
+import cart from "../models/cart.js";
+
+const getCartItemsByOrderId = async (orderId) => {
+  try {
+    const cartItems = await shoppingHistory.findOne({
+      where: { orderId }, // Cari shoppingHistory berdasarkan orderId
+      include: [
+        {
+          model: cart, // Gabungkan dengan cart model
+          as: "shoppingHistoryCarts", // Alias sesuai dengan yang sudah didefinisikan
+        },
+      ],
+    });
+
+    if (!cartItems) {
+      throw new Error("Order tidak ditemukan.");
+    }
+
+    return cartItems.shoppingHistoryCarts; // Mengembalikan semua produk di cart
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+import { Op } from "sequelize";
+import shoppingHistory from "../models/shoppingHistory.js";
+import cart from "../models/cart.js";
+
+const checkoutAndUpdateCart = async (userId) => {
+  try {
+    // 1. Buat entri di shoppingHistory
+    const newShoppingHistory = await shoppingHistory.create({
+      userId,
+      driverNotes: "-",
+      shoppingTotal: 100, // Total belanja
+      payment: "Credit", // Metode pembayaran
+      date: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    // 2. Ambil orderId dari shoppingHistory yang baru saja dibuat
+    const orderId = newShoppingHistory.orderId;
+
+    // 3. Update orderId pada semua cart yang sesuai dengan userId
+    await cart.update(
+      { orderId }, // Update orderId
+      {
+        where: {
+          userId, // Sesuaikan dengan userId yang melakukan checkout
+          orderId: { [Op.is]: null }, // Hanya yang orderId-nya null
+        },
+      }
+    );
+
+    console.log("Keranjang berhasil diperbarui dengan orderId");
+  } catch (error) {
+    console.error("Error saat checkout:", error);
+  }
+};

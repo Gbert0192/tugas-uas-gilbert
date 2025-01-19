@@ -1,0 +1,175 @@
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4 max-w-lg">
+    <div class="bg-white shadow-lg rounded-lg p-6 sm:p-8">
+      <h1 class="text-3xl font-semibold text-gray-800 text-center">
+        Register Your Account
+      </h1>
+      <p class="mt-2 text-sm text-center text-gray-600">
+        Register your account with phone number and email
+      </p>
+
+      <form
+        class="mt-8 space-y-6"
+        method="post"
+        action="/auth/register"
+        id="myForm"
+      >
+        <!-- Phone Number Input -->
+        <div class="flex flex-col">
+          <label for="phoneNumber" class="text-gray-800 text-lg"
+            >Nomor Telepon</label
+          >
+          <div class="flex items-center border border-gray-300 rounded-md h-12">
+            <span class="p-4 text-lg text-gray-500">+62</span>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="block w-full text-lg pl-3 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-md"
+              required
+              placeholder="82162625555"
+              aria-label="Nomor Telepon"
+            />
+          </div>
+          <div id="phone-warning" style="color: red"></div>
+        </div>
+
+        <!-- Email Input -->
+        <div class="mt-4 flex flex-col">
+          <label for="email" class="text-gray-800 text-lg">Email</label>
+          <div class="flex items-center border border-gray-300 rounded-md h-12">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="block w-full text-lg pl-3 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-md"
+              required
+              placeholder="hellowfrombackend@gmail.com"
+            />
+          </div>
+          <div id="email-warning" style="color: red"></div>
+        </div>
+
+        <!-- Full Name Input -->
+        <div class="mt-4 flex flex-col">
+          <label for="fullName" class="text-gray-800 text-lg">Full Name</label>
+          <div class="flex items-center border border-gray-300 rounded-md h-12">
+            <input
+              type="text"
+              id="fullName"
+              name="name"
+              class="block w-full text-lg pl-3 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-md"
+              required
+              placeholder="Elvis Namasate"
+            />
+          </div>
+          <div id="name-warning" style="color: red"></div>
+        </div>
+
+        <!-- Sex Input -->
+        <div class="mt-4 flex flex-col">
+          <label for="sex" class="text-gray-800 text-lg">Select Your Sex</label>
+          <select
+            id="sex"
+            name="sex"
+            class="flex items-center border border-gray-300 rounded-md h-12 w-full text-lg focus:outline-none focus:ring-2 focus:ring-green-500 pl-3"
+            required
+          >
+            <option value="select" disabled selected>
+              Please select your sex
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="NON">Don't want to mention</option>
+          </select>
+        </div>
+
+        <!-- Password Input -->
+        <div class="mt-4 flex flex-col">
+          <label for="password" class="text-gray-800 text-lg">Password</label>
+          <div class="flex items-center border border-gray-300 rounded-md h-12">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="block w-full text-lg pl-3 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-md"
+              required
+              placeholder="Masukkan Password Anda"
+            />
+            <button
+              type="button"
+              id="togglePassword"
+              class="flex items-center justify-center w-12 h-full text-gray-600 focus:outline-none"
+            >
+              <span id="toggleText" class="p-4">Show</span>
+            </button>
+          </div>
+          <div id="password-warning" style="color: red"></div>
+        </div>
+
+        <!-- confirm password -->
+        <div class="mt-4 flex flex-col">
+          <label for="confirmPassword" class="text-gray-800 text-lg"
+            >Confirm Password</label
+          >
+          <div class="flex items-center border border-gray-300 rounded-md h-12">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="block w-full text-lg pl-3 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-md"
+              required
+              placeholder="Konfirmasi Password Anda"
+            />
+            <button
+              type="button"
+              id="togglePassword2"
+              class="flex items-center justify-center w-12 h-full text-gray-600 focus:outline-none"
+            >
+              <span id="toggleText2" class="p-4">Show</span>
+            </button>
+          </div>
+          <div id="confirmPassword-warning" style="color: red"></div>
+        </div>
+        <!-- mulai -->
+        <% if (messages.warning_msg) { %>
+        <div class="bg-red-500 text-white p-4 rounded-lg">
+          <%= messages.warning_msg %>
+        </div>
+        <% } %>
+
+        <!-- Submit Button -->
+        <button
+          id="submitButton"
+          type="submit"
+          class="mt-7 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-3xl bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 h-12"
+        >
+          Continue
+        </button>
+      </form>
+
+      <div class="text-center mt-7">
+        <p class="text-xs text-gray-500">
+          2024 Grab Inc.
+          <a
+            class="text-blue-500 hover:underline focus:outline-none focus:underline"
+            href=""
+            >Terms and Conditions</a
+          ><br />
+          Invisible reCAPTCHA by Google
+          <a
+            class="text-blue-500 hover:underline focus:outline-none focus:underline"
+            href=""
+            >Privacy Policy</a
+          >
+          and
+          <a
+            class="text-blue-500 hover:underline focus:outline-none focus:underline"
+            href=""
+            >Terms of use</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,15 +1,16 @@
 import User from "./user.js";
 import shoppingHistory from "./shoppingHistory.js";
-import shoppingList from "./shoppingList.js";
+import cart from "./cart.js";
 import topUpHistory from "./topUpHistory.js";
 
 const associateModels = () => {
+  // Relasi User -> ShoppingHistory
   User.hasMany(shoppingHistory, {
     foreignKey: {
       name: "userId",
       allowNull: false, // Pastikan foreign key ini wajib ada
     },
-    as: "shoppingHistories",
+    as: "shoppingHistories", // Unique alias
   });
 
   // Relasi User -> TopUpHistory
@@ -18,7 +19,7 @@ const associateModels = () => {
       name: "userId",
       allowNull: false, // Pastikan foreign key ini wajib ada
     },
-    as: "topUpHistories",
+    as: "topUpHistories", // Unique alias
   });
 
   // Relasi ShoppingHistory -> User
@@ -28,26 +29,26 @@ const associateModels = () => {
       allowNull: false, // Pastikan foreign key ini wajib ada
     },
     targetKey: "userId",
-    as: "user",
+    as: "user", // Unique alias
   });
 
-  // Relasi ShoppingHistory -> ShoppingList
-  shoppingHistory.hasMany(shoppingList, {
+  // Relasi ShoppingHistory -> Cart
+  shoppingHistory.hasMany(cart, {
     foreignKey: {
       name: "orderId",
       allowNull: false, // Pastikan foreign key ini wajib ada
     },
-    as: "shoppingLists",
+    as: "shoppingHistoryCarts", // Unique alias
   });
 
-  // Relasi ShoppingList -> ShoppingHistory
-  shoppingList.belongsTo(shoppingHistory, {
+  // Relasi Cart -> ShoppingHistory
+  cart.belongsTo(shoppingHistory, {
     foreignKey: {
       name: "orderId",
       allowNull: false, // Pastikan foreign key ini wajib ada
     },
     targetKey: "orderId",
-    as: "history",
+    as: "shoppingHistory", // Unique alias
   });
 };
 

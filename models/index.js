@@ -1,7 +1,7 @@
 import User from "./user.js";
 import shoppingHistory from "./shoppingHistory.js";
-import shoppingList from "./shoppingList.js"; // Typo diperbaiki
 import topUpHistory from "./topUpHistory.js"; // Tambahkan .js jika diperlukan
+import Cart from "./cart.js";
 import associateModels from "./associations.js";
 import db from "../config/Database.js";
 const syncAndAssociateModels = async () => {
@@ -12,10 +12,4 @@ const syncAndAssociateModels = async () => {
     console.log("gagal", error);
   }
 };
-export {
-  User,
-  shoppingList,
-  topUpHistory,
-  shoppingHistory,
-  syncAndAssociateModels,
-};
+export { User, topUpHistory, shoppingHistory, syncAndAssociateModels, Cart };

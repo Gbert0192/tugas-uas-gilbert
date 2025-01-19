@@ -18,12 +18,8 @@ const topUpHistory = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    payment: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    method: {
-      type: DataTypes.ENUM("Bank", "Cash", "Seven Eleven"),
+    paymentMethod: {
+      type: DataTypes.ENUM("Credit", "Debit", "PayPal"),
       allowNull: false,
     },
     date: {

@@ -1,0 +1,58 @@
+<!-- ========== START NAV ========== -->
+<header
+  class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full py-7 bg-white sticky top-0 shadow"
+>
+  <nav
+    class="relative max-w-7xl w-full flex flex-wrap md:grid md:grid-cols-12 basis-full items-center px-4 md:px-8 mx-auto"
+  >
+    <div class="md:col-span-3">
+      <a
+        class="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
+        href="/main"
+        aria-label="Preline"
+      >
+        <h1 class="ai-give-up-logo">AiGiveUP</h1>
+      </a>
+    </div>
+
+    <!-- Add Search Input here -->
+    <div class="md:col-span-6 flex justify-center items-center mt-4 md:mt-0">
+      <form
+        action="/main/search"
+        method="GET"
+        class="flex items-center w-full max-w-lg"
+      >
+        <input
+          type="text"
+          name="query"
+          placeholder="Cari produk..."
+          class="w-full py-2 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
+        />
+        <button
+          type="submit"
+          class="ml-2 py-2 px-4 bg-lime-400 text-white rounded-lg hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-lime-400"
+        >
+          Cari
+        </button>
+      </form>
+    </div>
+
+    <div
+      class="flex items-center gap-x-1 md:gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3"
+    >
+      <a href="/auth/login" class="relative group">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SRRmhH4X5N2e4QalcoxVbzYsD44C-sQv-w&s"
+          alt="pp"
+          class="w-12 h-12 rounded-full border-2 border-black-300"
+        />
+        <span
+          class="absolute left-1/2 transform -translate-x-1/2 text-sm text-white bg-black p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          Login?
+        </span>
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- ========== END NAV ========== -->

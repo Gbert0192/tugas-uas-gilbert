@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon app.js ",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "npx tailwindcss build src/css/tailwind.css -o public/css/styles.css --watch"
   },
@@ -14,8 +14,11 @@
   "description": "",
   "dependencies": {
     "autoprefixer": "^10.4.20",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
@@ -29,6 +32,7 @@
     "postcss": "^8.4.47",
     "preline": "^2.5.1",
     "sequelize": "^6.37.5",
+    "socket.io": "^4.8.1",
     "uuid": "^11.0.2",
     "uuid4": "^2.0.3"
   },
